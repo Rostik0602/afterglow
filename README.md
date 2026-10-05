@@ -71,7 +71,6 @@ npm run dev
 Для перевірки:
 
 - [/?blogger=milana](https://afterglow-theta-eight.vercel.app/?blogger=milana) одразу відкриває профіль Мілани;
-- [/?src=tiktok](https://afterglow-theta-eight.vercel.app/?src=tiktok) додає мітку джерела до посилань у Telegram.
 
 ## Що можна зробити далі
 
