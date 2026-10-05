@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# afterglow — вітрина AI-блогерів
 
-## Getting Started
+Інтерактивний mobile-first прототип вітрини віртуальних блогерів: чотири AI-персонажі з власним характером, демо-чат і воронка в Telegram.
 
-First, run the development server:
+**Демо:** https://afterglow-theta-eight.vercel.app
+**Репозиторій:** https://github.com/Rostik0602/afterglow
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![Afterglow](https://afterglow-theta-eight.vercel.app/opengraph-image)
+
+## Концепція
+
+Не просто каталог із чотирма картками, а вітрина продукту, з персонажами якого можна поговорити. Головна механіка — демо-діалог: персонаж «друкує», відповідає на вибір користувача, а в момент найбільшого інтересу сам запрошує продовжити розмову в Telegram. Так перехід у Telegram стає природним продовженням взаємодії, а не просто кнопкою.
+
+Шлях користувача: hero → каталог → профіль і демо-чат → Telegram.
+
+## Що реалізовано
+
+- **Каталог із 4 персонажів** — 2 чоловіки й 2 жінки в різних нішах: технології, мода, подорожі, лайфстайл. На телефоні — свайп-карусель із центруванням карток, на планшеті — сітка 2×2, на десктопі — 4 в ряд.
+- **Фільтри за тематикою** з анімованою перебудовою сітки. Фільтри генеруються з даних.
+- **Профіль персонажа** — на телефоні нативний bottom sheet, на десктопі модальне вікно. Закривається свайпом, хрестиком, тапом по фону, Esc і кнопкою «Назад».
+- **Демо-чат** — скриптований діалог з індикатором «друкує…», швидкими відповідями й персональним переходом у Telegram.
+- **Стрічка постів** з живими лайками.
+- **Персональна айдентика** — кожен персонаж має власний неоновий акцент, узятий із кольору світла на його фото. Він фарбує картку, профіль, чат і світіння.
+- **OG-прев’ю**, згенероване з коду: посилання красиво розгортається в Telegram і соцмережах.
+
+## Ключові рішення
+
+- **Стан профілю живе в URL** (`?blogger=mark`). Профілем можна поділитися посиланням, а кнопка «Назад» на телефоні закриває його, а не виводить із сайту.
+- **Deep link у Telegram з контекстом.** Кнопки ведуть на `t.me/bot?start=<персонаж>__<джерело>`, тож у реальному продукті бот одразу знатиме, до кого й звідки прийшов користувач. Джерело береться з `?src=` або `?utm_source=`, тому одну вітрину можна використовувати під різні джерела трафіку.
+- **Контент відокремлений від верстки.** Усі тексти — в `src/data/site.ts`, персонажі, діалоги й пости — в `src/data/bloggers.ts`. Новий персонаж — це один об’єкт у масиві, без нового коду.
+- **Свідомо обмежена кількість переходів у Telegram** (шапка, hero, чат, фінальний блок), щоб не тиснути на користувача.
+- **Продуктивність на слабких смартфонах.** Неонові плями зроблені радіальними градієнтами замість `filter: blur`, анімуються лише `transform` і `opacity`, більшість секцій — серверні компоненти без зайвого JavaScript.
+- **Без Redux / RTK Query.** Глобального стану майже немає, а API за ТЗ не потрібен. Шар даних винесений окремо, тож із появою бекенду його можна перевести на RTK Query, не змінюючи компоненти.
+- **Доступність:** семантична розмітка, видимий фокус, ARIA для вкладок і діалогу, підтримка `prefers-reduced-motion`.
+
+## Стек
+
+Next.js (App Router) · React · TypeScript · Tailwind CSS v4 · Motion · Radix UI · Lucide · Vercel
+
+## AI-інструменти
+
+- **Персонажі** згенеровані в Leonardo.ai (модель Lucid Realism). Кожен образ продуманий під свою нішу, а кольорове неонове світло на фото лягло в основу кольорової системи сайту.
+- **Розробка** — з AI-асистентом Claude: планування архітектури, генерація й рев’ю коду, тексти.
+
+## Структура
+
+```
+src/
+├── app/            # layout, сторінка, глобальні стилі, favicon, OG-зображення
+├── components/
+│   ├── blogger/    # картка, профіль, чат, пости, фільтри
+│   ├── layout/     # шапка, футер
+│   ├── sections/   # hero, каталог, «Як це працює», фінальний CTA
+│   ├── ui/         # кнопка, чипси, контейнер, анімації
+│   └── icons/
+├── data/           # контент сайту й персонажів
+├── hooks/          # стан профілю в URL, джерело трафіку, логіка чату
+├── lib/            # deep link у Telegram, форматування, утиліти
+└── types/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Запуск локально
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+git clone https://github.com/Rostik0602/afterglow.git
+cd afterglow
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Відкрийте http://localhost:3000.
 
-## Learn More
+Посилання для перевірки:
 
-To learn more about Next.js, take a look at the following resources:
+- [`/?blogger=milana`](https://afterglow-theta-eight.vercel.app/?blogger=milana) — одразу відкриває профіль персонажа;
+- [`/?src=tiktok`](https://afterglow-theta-eight.vercel.app/?src=tiktok) — усі посилання в Telegram отримують мітку джерела.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Що можна розвинути далі
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Підключити реального Telegram-бота й передавати контекст через `start`-параметр.
+- Замінити скриптований чат на відповіді LLM з характером кожного персонажа.
+- Перевести дані на API та RTK Query, додати CMS для керування персонажами.
+- Додати аналітику воронки: перегляди профілів, проходження чату, переходи в Telegram.
+- A/B-тести заголовків і CTA під різні джерела трафіку.
