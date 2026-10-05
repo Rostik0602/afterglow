@@ -1,5 +1,6 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import { TelegramIcon } from "@/components/icons/TelegramIcon";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -7,14 +8,25 @@ import { content, siteConfig } from "@/data/site";
 import { useTrafficSource } from "@/hooks/useTrafficSource";
 import { buildTelegramLink } from "@/lib/telegram";
 
+function scrollToTop(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+}
+
 export function Header() {
   const source = useTrafficSource();
 
   return (
-    <header id="top" className="sticky top-[max(0.75rem,env(safe-area-inset-top))] z-40 mt-3">
+    <header className="sticky top-[max(0.75rem,env(safe-area-inset-top))] z-40 mt-3">
       <Container>
         <nav className="glass flex h-14 items-center justify-between gap-3 rounded-full border border-line pr-2 pl-4 shadow-[0_8px_32px_-12px_rgb(0_0_0/0.6)]">
-          <a href="#top" aria-label={siteConfig.name} className="flex items-center gap-2.5">
+          <a
+            href="#"
+            onClick={scrollToTop}
+            aria-label={siteConfig.name}
+            className="flex items-center gap-2.5"
+          >
             <svg
               viewBox="0 0 32 32"
               aria-hidden="true"
