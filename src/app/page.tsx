@@ -1,4 +1,5 @@
 import { Header } from "@/components/layout/Header";
+import { Catalog } from "@/components/sections/Catalog";
 import { Hero } from "@/components/sections/Hero";
 import { AmbientGlow } from "@/components/ui/AmbientGlow";
 
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Catalog />
       </main>
     </>
   );
