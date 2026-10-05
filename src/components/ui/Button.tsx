@@ -23,7 +23,7 @@ type ButtonAsLink = BaseProps &
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const base =
-  "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap select-none transition-[background-color,border-color,color,box-shadow,filter,transform] duration-200 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 [&_svg]:shrink-0";
+  "relative inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap select-none transition-[background-color,border-color,color,box-shadow,filter,translate,scale] duration-200 ease-out active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50 [&_svg]:shrink-0";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
