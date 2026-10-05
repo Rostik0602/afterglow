@@ -21,14 +21,14 @@ function HeroTile({ blogger }: { blogger: Blogger }) {
       onClick={() => openBlogger(blogger.id)}
       aria-label={`${blogger.name} — відкрити профіль`}
       style={{ "--accent": blogger.accent } as CSSProperties}
-      className="group relative block aspect-4/5 w-full overflow-hidden rounded-3xl border border-line bg-surface text-left transition-[transform,box-shadow] duration-500 hover:-translate-y-1.5 hover:glow-accent"
+      className="group relative block aspect-4/5 w-full overflow-hidden rounded-3xl border border-line bg-surface text-left transition-[translate,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1.5 hover:border-accent/40 hover:glow-accent"
     >
       <Image
         src={blogger.portrait.src}
         alt=""
         fill
         sizes="(min-width: 1024px) 280px, 1px"
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         style={{ objectPosition: blogger.portrait.position }}
       />
       <span className="absolute inset-0 bg-linear-to-t from-ink/90 via-ink/10 to-transparent" />
