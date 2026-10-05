@@ -51,7 +51,7 @@ export function BloggerCard({ blogger, className }: BloggerCardProps) {
       <div className="relative -mt-20 flex flex-1 flex-col gap-4 p-5 pt-0">
         <div>
           <h3 className="font-display text-lg font-semibold">{blogger.name}</h3>
-          <p className="relative z-10 mt-1 w-fit cursor-text text-sm text-muted select-text">
+          <p className="mt-1 text-sm text-muted">
             @{blogger.handle} · {blogger.location}
           </p>
         </div>
@@ -67,7 +67,7 @@ export function BloggerCard({ blogger, className }: BloggerCardProps) {
           onClick={() => openBlogger(blogger.id)}
           aria-label={`${content.card.cta}: ${blogger.name}`}
           variant="secondary"
-          className="static w-full border-accent/30 bg-accent/10 text-accent after:absolute after:inset-0 hover:border-accent hover:bg-accent hover:text-ink"
+          className="w-full border-accent/30 bg-accent/10 text-accent hover:border-accent hover:bg-accent hover:text-ink"
         >
           {content.card.cta}
           <ArrowUpRight />
