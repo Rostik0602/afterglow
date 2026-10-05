@@ -25,7 +25,7 @@ export function AvatarStack({ className }: AvatarStackProps) {
               onClick={() => openBlogger(blogger.id)}
               aria-label={`${blogger.name} — відкрити профіль`}
               style={{ "--accent": blogger.accent } as CSSProperties}
-              className="relative block size-11 overflow-hidden rounded-full ring-2 ring-ink transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:ring-accent focus-visible:-translate-y-1 focus-visible:ring-accent"
+              className="relative block size-11 overflow-hidden rounded-full ring-2 ring-ink transition-[translate,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:ring-accent focus-visible:-translate-y-1 focus-visible:ring-accent"
             >
               <Image
                 src={blogger.portrait.src}
