@@ -9,7 +9,7 @@ interface ChipProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const chipBase =
-  "inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full border px-4 text-sm font-medium whitespace-nowrap select-none transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex min-h-10 items-center justify-center gap-1.5 rounded-full border px-4 text-sm font-medium whitespace-nowrap select-none transition-[background-color,border-color,color,scale] duration-200 ease-out active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50";
 
 const chipTones: Record<ChipTone, { idle: string; active: string }> = {
   neutral: {
