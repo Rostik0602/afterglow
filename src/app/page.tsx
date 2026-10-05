@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { BloggerSheet } from "@/components/blogger/BloggerSheet";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { StickyTelegramBar } from "@/components/layout/StickyTelegramBar";
 import { Catalog } from "@/components/sections/Catalog";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -21,7 +20,6 @@ export default function Home() {
         <TelegramCTA />
       </main>
       <Footer />
-      <StickyTelegramBar />
       <Suspense fallback={null}>
         <BloggerSheet />
       </Suspense>
