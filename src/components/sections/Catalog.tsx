@@ -34,7 +34,7 @@ export function Catalog() {
 
         <Reveal delay={0.1} className="mt-10">
           <MotionConfig reducedMotion="user">
-            <ul className="no-scrollbar relative -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4">
+            <ul className="no-scrollbar relative -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[10vw] pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4">
               <AnimatePresence mode="popLayout" initial={false}>
                 {visible.map((blogger) => (
                   <motion.li
@@ -44,7 +44,7 @@ export function Catalog() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-[82%] shrink-0 snap-start sm:w-auto"
+                    className="w-[80vw] shrink-0 snap-center sm:w-auto"
                   >
                     <BloggerCard blogger={blogger} />
                   </motion.li>
