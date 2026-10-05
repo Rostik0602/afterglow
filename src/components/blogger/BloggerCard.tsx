@@ -18,7 +18,7 @@ export function BloggerCard({ blogger, className }: BloggerCardProps) {
     <article
       style={{ "--accent": blogger.accent } as CSSProperties}
       className={cn(
-        "group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1 hover:border-accent/40 hover:glow-accent",
+        "group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface transition-[translate,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-accent/40 hover:glow-accent",
         className,
       )}
     >
@@ -27,8 +27,8 @@ export function BloggerCard({ blogger, className }: BloggerCardProps) {
           src={blogger.portrait.src}
           alt={blogger.portrait.alt}
           fill
-          sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 85vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 80vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           style={{ objectPosition: blogger.portrait.position }}
         />
         <div className="absolute inset-0 bg-linear-to-t from-surface via-surface/10 to-transparent" />
@@ -51,7 +51,7 @@ export function BloggerCard({ blogger, className }: BloggerCardProps) {
       <div className="relative -mt-20 flex flex-1 flex-col gap-4 p-5 pt-0">
         <div>
           <h3 className="font-display text-lg font-semibold">{blogger.name}</h3>
-          <p className="mt-1 text-sm text-muted">
+          <p className="relative z-10 mt-1 w-fit cursor-text text-sm text-muted select-text">
             @{blogger.handle} · {blogger.location}
           </p>
         </div>
