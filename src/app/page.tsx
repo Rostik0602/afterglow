@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import { BloggerSheet } from "@/components/blogger/BloggerSheet";
 import { Header } from "@/components/layout/Header";
 import { Catalog } from "@/components/sections/Catalog";
 import { Hero } from "@/components/sections/Hero";
@@ -12,6 +14,9 @@ export default function Home() {
         <Hero />
         <Catalog />
       </main>
+      <Suspense fallback={null}>
+        <BloggerSheet />
+      </Suspense>
     </>
   );
 }
