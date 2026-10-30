@@ -10,14 +10,18 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@ai-sdk/google": "^4.0.108",
+    "@ai-sdk/react": "^4.0.161",
     "@radix-ui/react-dialog": "^1.1.23",
+    "ai": "^7.0.157",
     "clsx": "^2.1.1",
     "lucide-react": "^1.52.0",
     "motion": "^14.0.0",
     "next": "16.3.8",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "tailwind-merge": "^3.7.0"
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
